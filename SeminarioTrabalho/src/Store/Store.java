@@ -11,4 +11,14 @@ public class Store {
     {
         ProductsAvaible.add(product);
     }
+
+    public ArrayList<Product> ShowItems()
+    {
+        if(ProductsAvaible == null)
+        {
+            throw new IllegalArgumentException("Lista vazia!");
+        }
+        
+        return ProductsAvaible;
+    }
 }
