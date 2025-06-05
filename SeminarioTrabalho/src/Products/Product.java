@@ -78,12 +78,12 @@ public class Product {
         return Quantity;
     }
 
-    //Metodo que serve para clonar o Objeto
-    //O que acontece aqui? A classe Product em sua essencia e um prototipo,
-    //ou seja, ela serve como base para os outros objetos, ja que eles serao
-    //clones. Este metodo usa o construtor private, que tem como parametro um objeto
-    //da classe private, e nesse metodo ele passa essa classe como parametro,
-    //assim, clonando o objeto
+    // Método responsável por clonar o objeto atual.
+    // Aqui implementamos o padrão de projeto Prototype,
+    // onde a própria classe Product atua como protótipo
+    // para criar novas instâncias com base em um objeto existente.
+    // O método Clone utiliza um construtor privado que recebe o próprio objeto
+    // como parâmetro, copiando seus atributos e criando uma nova instância idêntica.
     public Product Clone()
     {
         return new Product(this);
