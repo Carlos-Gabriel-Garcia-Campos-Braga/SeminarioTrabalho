@@ -79,19 +79,20 @@ public class Product {
     }
 
     //Metodo que serve para clonar o Objeto
-    public Product Clone(Product productClone)
+    //O que acontece aqui? A classe Product em sua essencia e um prototipo,
+    //ou seja, ela serve como base para os outros objetos, ja que eles serao
+    //clones. Este metodo usa o construtor private, que tem como parametro um objeto
+    //da classe private, e nesse metodo ele passa essa classe como parametro,
+    //assim, clonando o objeto
+    public Product Clone()
     {
-        if(productClone == null)
-        {
-            throw new IllegalArgumentException("Nada para ser clonado!");
-        }
         return new Product(this);
     }
 
     @Override
     public String toString()
     {
-        return "Produto" +
+        return "       Produto   " +
                "\nModelo: " + Model +
                "\nCategoria: " + Category +
                "\nValor: " + Value +
