@@ -161,12 +161,6 @@ public class Car {
         if (preco < 0) {
             throw new IllegalArgumentException("Preço não pode ser negativo");
         }
-        if (preco > 1000000) {
-            throw new IllegalArgumentException("Preço não pode ser superior a R$ 1.000.000");
-        }
-        if (preco > 0 && preco < 10000) {
-            throw new IllegalArgumentException("Preço deve ser pelo menos R$ 10.000 para carros novos");
-        }
         
         this.preco = preco;
     }
@@ -185,7 +179,7 @@ public class Car {
     @Override
     public String toString() {
         return String.format("""
-            Carro {
+            =====Carro=====
                 Marca: %s
                 Modelo: %s
                 Ano: %d
@@ -194,6 +188,6 @@ public class Car {
                 Combustível: %s
                 Freio: %s
                 Preço: R$ %.2f
-            }""", marca, modelo, ano, motor, rodas, combustivel, freio, preco);
+            """, marca, modelo, ano, motor, rodas, combustivel, freio, preco);
     }
 }
