@@ -11,7 +11,7 @@ public class App {
             Car c2 = c1.Clone();
             c2.setMotor("1.0");
             c2.setAno(2018);
-            c2.setPreco(57.000);
+            c2.setPreco(59.000);
 
             System.out.println(c1);
             System.out.println(c2);
