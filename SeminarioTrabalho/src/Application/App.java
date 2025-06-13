@@ -17,7 +17,7 @@ public class App {
             Brand corollas = new Brand(2020, "1.6", "Aro 16", "Diesel", "ABS", 70.000);
             corollas.setModelo("Corolla");
             corollas.setMarca("Toyota");
-            Brand c4 = corollas.clone();
+            Car c4 = corollas.clone();
             
             System.out.println(c1);
             System.out.println(c2);
