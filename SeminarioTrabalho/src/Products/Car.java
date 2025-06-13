@@ -1,8 +1,8 @@
 package Products;
 
-public class Car {
-    private String modelo;
-    private String marca;
+public class Car implements Cloneable {
+    
+    
     private int ano;
     private String motor;
     private String rodas;
@@ -10,10 +10,11 @@ public class Car {
     private String freio;
     private double preco;
 
-    private Car(Car productClone)
+     public Car(){ // CONSTRUTOR VAZIO GENERICO
+    }
+    public Car(Car productClone)
     {
-        this.modelo = productClone.modelo;
-        this.marca = productClone.marca;
+        
         this.ano  = productClone.ano;
         this.motor = productClone.motor;
         this.rodas = productClone.rodas;
@@ -22,10 +23,10 @@ public class Car {
         this.preco = productClone.preco;
     }
 
-    public Car(String modelo, String marca, int ano, String motor, String rodas, String combustivel, String freio, double preco)
+    public Car( int ano, String motor, String rodas, String combustivel, String freio, double preco)
     {
-        this.modelo = modelo;
-        this.marca = marca;
+        
+        
         this.ano  = ano;
         this.motor = motor;
         this.rodas = rodas;
@@ -35,8 +36,8 @@ public class Car {
     }
 
     // Getters
-    public String getModelo() { return modelo; }
-    public String getMarca() { return marca; }
+   
+   
     public int getAno() { return ano; }
     public String getMotor() { return motor; }
     public String getRodas() { return rodas; }
@@ -45,18 +46,7 @@ public class Car {
     public double getPreco() { return preco; }
     
     // Setters com validações e regras de negócio
-    public void setModelo(String modelo) {
-        if (modelo == null || modelo.trim().isEmpty()) {
-            throw new IllegalArgumentException("Modelo não pode ser nulo ou vazio");
-        }
-        if (modelo.length() < 2) {
-            throw new IllegalArgumentException("Modelo deve ter pelo menos 2 caracteres");
-        }
-        if (modelo.length() > 50) {
-            throw new IllegalArgumentException("Modelo não pode ter mais de 50 caracteres");
-        }
-        this.modelo = modelo.trim();
-    }
+   
     
     public void setAno(int ano) {
         int anoAtual = java.time.Year.now().getValue();
@@ -165,29 +155,31 @@ public class Car {
         this.preco = preco;
     }
 
-    // Método responsável por clonar o objeto atual.
-    // Aqui implementamos o padrão de projeto Prototype,
-    // onde a própria classe Product atua como protótipo
-    // para criar novas instâncias com base em um objeto existente.
-    // O método Clone utiliza um construtor privado que recebe o próprio objeto
-    // como parâmetro, copiando seus atributos e criando uma nova instância idêntica.
-    public Car Clone()
-    {
-        return new Car(this);
+     @Override
+     public Car clone() {
+        try {
+            /*
+             * Estamos chamando o método clone() da classe Object e depois fazendo o Casting para Carro
+             * super.clone() não executa os construtores da sua classe. Ele simplesmente copia o estado atual da memória (valores dos atributos).
+             */
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Erro ao clonar o objeto", e);
+        }
     }
 
     @Override
     public String toString() {
         return String.format("""
             =====Carro=====
-                Marca: %s
-                Modelo: %s
+                
+                
                 Ano: %d
                 Motor: %s
                 Rodas: %s
                 Combustível: %s
                 Freio: %s
                 Preço: R$ %.2f
-            """, marca, modelo, ano, motor, rodas, combustivel, freio, preco);
+            """, ano, motor, rodas, combustivel, freio, preco);
     }
 }
